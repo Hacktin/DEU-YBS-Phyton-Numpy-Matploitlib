@@ -268,15 +268,150 @@ print(shapeFourthArray[::-2])
 #Bu sefer bu diziyi ters çevirmede sayıları dizerken 2'şer 2'şer ya da 2 nin katlarınca adım sayısı ile
 #dizilecektir 
 
-#Komut satir
-
 print("")
 
 print(shapeFourthArray[::-3])
+#Diziyi tersine çevirirken 3'er 3'er ya da 3'ün katları kadar adım sayısı ile tersten dizilecektir
 print("")
+
 print(shapeFourthArray[::-4])
+
 print("")
+
 print(shapeFourthArray[::-5])
 
-      
+
+print(shapeFourthArray[::1])
+#Bu komutta -1 aksine tersten adım sayısı 1 er 1 er yapmak yerine tersi olmayan şekilde 1'er 1'er adımla
+#diziliş yapacaktır
+
+print(shapeFourthArray[::2])
+#::2 dediğimiz de tersten olmayıp yine bu sefer 2'şer 2'şer ya da 2 in katları şekilde adım sayısıyla
+#bir diziliş yapacaktır
+
+#*****************************************#
+
+#Bir dizide belirli adım belirleyerek belirlediğimiz sınırlarda bize yeni bir dizi döndürmesini yaparsak
+#nasıl bir şey yapabiliriz.Tabi biz bunu düz bir liste üzerinden size gösterecem.Demek istediğimi bir basit
+#örnek üzerinden gösterelim
+
+newList=np.arange(1,50,2)
+#1'den 50'ye kadar 50 dahil olmayacak şekilde yeni bir dizi oluşturuyoruz önce
+
+#Diyelim ki bu listenin 3.indexinden 11.indexine kadar 3'er adımla yeni bir dizi almak isteyelim.O zaman şöyle
+#bir şey yapacaz.Gelin görelim kullanımı
+
+newlittleList=newList[3:11:3]
+#yeni listeden şöyle bir alt küme olacak şekilde yeni değerleri alıp bir liste oluşturduk.
+#newList diyip kapalı parantez 3 diyip elemanların alınmaya başlanacağı ilk indexi belirledik,
+#ikinci sayı yani 11'de hangi indexe kadar değerler alınacağı söylüyor ve son sayı yani 3 de
+#kaçar adımla ilerleyerek her bir sayı değerini alacağını söylüyoruz.
+#Görselle gösterecek olursak
+
+#İndexler       0 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+#Normal Küme=> (1 3  5  7  9 11 13 15 17 19 21 23 25 27 29 31 33 35 37 39 41 43 45 47 49)
+#Yeni alt kümemiz(      7_ _ _  13_ _  _  19)
+#_ ifadesi adımı ifade eder
+#7 de başlangıç olarak belirlediğimiz indexin değeridir
+#11 index de 21'dir ama tabi o dahil olmayacağı için ve artış miktarı 3'er 3'er olduğu için en son 19 u alt kümeye
+#eleman olacaktır
+
+#Yeni oluşturulan dizi ilk oluşturduğumuz dizinin alt kümesi gibi düşenebilirsiniz.Görselde gerçekleşen olay
+#yukarıda yazdığımız komutun yaptığı şeydir
+ 
+print(newList)
+print("")
+print(newlittleList)
+
+print("")
+
+#***********************************************************#
+
+#Gelelim iki diziyi ya da matrisi birleştirme
+
+#Matris yapı varsa zaten iki farklı şekilde birleştirme vardır.Satır ya da sutün bazlı olacaktır
+
+#O zaman aşağıda  iki matris oluşturalım ve birleştirmeleri yapalim ve nasıl yapildiğini görelim
+
+unReshapeMatrix1=np.array([1,3,5,7,9,11,13,15,17,19])
+unReshapeMatrix2=np.arange(1,20,2)
+
+print(unReshapeMatrix1)
+print("")
+print(unReshapeMatrix2)
+
+print("")
+
+ReshapeMatrix11=unReshapeMatrix1.reshape(5,2)    
+ReshapeMatrix21=unReshapeMatrix2.reshape(5,2)
+
+print(ReshapeMatrix11)
+print("")
+print(ReshapeMatrix21)
+
+print("")
+
+JoiningMatrix1=np.concatenate([ReshapeMatrix11,ReshapeMatrix21],axis=0)
+#iki diziyi birleştirmek için numpy kütüphanesindeki
+#concatenate fonksiyonu kullanıyoruz ve parametre olarak ilk önce bir liste yapısı alacak ki
+#bu liste içinde de listeleri tanımlıyoruz ve diğeri parametremiz ise axis diye bir değerdir
+#axis e biz eğer sıfır dersek bize birleştirmeyi satır bazlı yapacaktır.Bi diğer seçeneği
+#1'dir ki o da sutün bazlı yapacaktır.
+
+JoiningMatrix2=np.concatenate([ReshapeMatrix11,ReshapeMatrix21],axis=1)
+
+
+#Satır ya da sutün bazli birleştirmeler yapılacağı zaman matrixlerin boyutları eşit olması gerektiğini bilmelisiniz
+#Farklı boyutlardaki iki matrixi birleştirmeye kalktığınız zaman program exception(hata) fırlatacaktır.
+#Hata da iki matrisin eksenleri birbiriyle eşleşmesi gerektiğidir.
+#Hatta tavsiyem farklı boyutta iki matrisi birleştirmeyi deneyin ve hatayı görün bence bu şekilde kafanıza daha çok yerleşecektir
+
+
+
+#Yine ayrıca birleştirme esnasında birleştirecek iki matrisin satır ve sutün sayıları birbiriyle eşleşebilmesi lazım
+#yani eşit sayıda olmassı lazım aksi takdirde yine bir hata alacaktır.Hatamızda eşleşme alakalı bir hata olacaktır
+#Hatta hatamızın tam ingilizcesi şu şekilde:
+#all the input array dimensions except for the concatenation axis must match exactly
+#Yani hatanın dediği şey:Dizi için birleştirecek inputlar yani dizilerin eksenleri birbiriyle eşleşmesi gerekiyor
+
+print(JoiningMatrix1)
+print("")
+print(JoiningMatrix2)
+
+print("")
+
+JoiningMatrix3=np.concatenate([unReshapeMatrix1,unReshapeMatrix2],axis=0)
+print(JoiningMatrix3)
+#Tek boyutlu dizilerde satır bazlı bir birleştirme yapabiliyoruz gördüğünüz gibi.Axis sıfır dediğimizde satır bazlı
+#iki tane tek boyutlu diziyi gayet güzel bir şekilde birleştirecektir.Peki sutün bazlı denersek ne olur :)
+print("")
+#JoiningMatrix4=np.concatenate([unReshapeMatrix1,unReshapeMatrix2],axis=1)
+#Eğer 1 boyutlu matrislerde sutün bazlı bir birleştirme yapmaya kalkarsınız tabiki tek boyutlu olduğu için
+#sutünla birleştirmeyecek çünkü bir index yapısı içinde iki sayı yer almamakta.O zaman bir tek satırlar olacaktır
+#sutünlar olmayacaktır.O yüzden bu şekilde bir birleştirme yapmaya kalkınca hata verecektir.
+
+#******************************************************#
+
+#Matrislerde Transpoz alma 
+
+#Transpoz alma bir matriste satır olan kısmı sutün yapma,sutünü da satır yapmadır.
+
+#Çok basit bir şekilde bunu yapabilmekteyiz gelin bir örnek yapalim
+
+UnTranspozeMatrix=np.arange(1,15,1)
+ReshapeUnTranspoze=UnTranspozeMatrix.reshape(2,7)
+print(UnTranspozeMatrix)
+print("")
+print(ReshapeUnTranspoze)
+
+print("")
+ReshapeTranspoze=ReshapeUnTranspoze.T
+print(ReshapeTranspoze)
+
+#14 uzunluğuna sahip dizimizin 2 sutün 7 satır şekilde yaptıktan 
+#T ifadesi kullandık dikkat edin.Bu Transpoze ifadesini söyleriz aslında ve
+#bu 2 sutün olan yapı 2 satır haline döner 7 satır olan da 7 sutüna döner.
+
+
+
 

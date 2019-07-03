@@ -498,14 +498,28 @@ print("")
 
 #Çıkarma da ve bölme de yine mantıkla ilerleyebilirsiniz ama çarpım söz konusu olduğunda şöyle bir durum var
 #1.matrisin satır sayısı 2.matrisin sutün sayısına eşit olacak ve aynı şekilde
-#1.matrisin sutün sayısı da 2.matrisin satır sayısına eşit olmalı.
+#1.matrisin sutün sayısı da 2.matrisin satır sayısına eşit olmalı.Çünkü çarpım yaparken
+#bir matrisin satırı ile bir matrisinde sutündaki değerini alıp çarpıyoruz
 
-numpy_array = np.array([0,1, 2, 3, 4, 5, 6, 7, 8, 9])
-numpy_array1 = numpy_array.reshape(5,2)
-numpy_array2 = numpy_array.reshape(2,5)
 
-print(numpy_array1)
-print(numpy_array2)
+list1=np.array([2,1,3,3])
+list2=np.array([1,4,2,1])
+
+reshapeList1=list1.reshape(2,2)
+reshapeList2=list2.reshape(2,2)
+
+print("1.4 İki matris çarpımı")
+print("")
+print(reshapeList1)
+print("*")
+print(reshapeList2)
+print("=")
+print(reshapeList1*reshapeList2)
+
+print("")
+
+
+
 
 
 

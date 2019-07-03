@@ -412,6 +412,100 @@ print(ReshapeTranspoze)
 #T ifadesi kullandık dikkat edin.Bu Transpoze ifadesini söyleriz aslında ve
 #bu 2 sutün olan yapı 2 satır haline döner 7 satır olan da 7 sutüna döner.
 
+#************************************************#
+
+#Matrisler üzerinde dört ya da aritmetik işlemler
+#İki matris ile bildiğimiz dört işlemleri gerçekleştirebiliriz.Gelin iki matris oluşturalım ve ardından
+#dört işlemleri gerçekleştirelim
+print("")
+print("1.0 İki matris arasında toplama")
+
+
+a1=np.arange(1,11,1)
+
+a11=a1.reshape(5,2)
+
+print(a11)
+
+print("+")
+
+print(a11)
+
+print("=")
+
+print(a11+a11)
+#İki matrisi toplamak normal toplama gibi toplam operatörünü kullandık gördüğünüz gibi
+#Bir de ilk reshape etmediğimiz 1 boyutlu matrisi kendisiyle toplayalım
+print("")
+print("1.1 İki matrisin toplamı(Tek boyutlu matris)")
+print(a1)
+print("+")
+print(a1)
+print("=")
+print(a1+a1)
+
+print("")
+
+#Peki şimdi şöyle yapalim boyutları ama dizinin içinde farklı elemanları ile olan şekilde toplama yapalim
+
+#Şimdi aynı boyutta ve uzunlukta fakat dizinin içinde birbirinden farklı elemanlar var.
+a2=np.arange(2,12,1)
+a3=np.arange(10,20,1)
+
+print("")
+print("1.2 İki tek boyutlu matrisin toplami(İçindeki elemanlar farklı bir çoğunun)")
+print("")
+print(a2)
+print("+")
+print(a3)
+print("=")
+print(a2+a3)
+
+#Şimdi bi de a2 ve a3 ün reshape li versiyonu yapıp bir de o şekilde toplamı görelim
+
+a21=a2.reshape(5,2)
+a31=a3.reshape(5,2)
+
+print("")
+print("1.3 İki tane iki boyutlu matrisin toplami(Eleman içerikleri farkli birçoğunun)")
+print("")
+print(a21)
+print("+")
+print(a31)
+print("=")
+print(a21+a31)
+print("")
+
+#*****************************************************************************************#
+#Şimdi şöyle bir şekilde toplama yapmaya kalkalım
+#Yukarıda reshape yaparken her ikisinin satır ve sutün sayılarına aynı vermiştik
+#bir tanesinde Transpoz yapalım yani satırları sutün , sutünları satır yapalım bakalım
+#ne olacak???
+
+#Transpoze_a31=a31.T
+
+#print(a21)
+#print("+")
+#print(Transpoze_a31)
+#print("=")
+#print(a21+Transpoze_a31)
+#Programı çalıştırdığımız da şu şekilde hata alacaz=>operands could not be broadcast together with shapes (5,2) (2,5) 
+#Yani operatörler yaptığımız shapeler ile birlikte yayınlanmış olamaz ya da kısaca farklı eksen değerleri ile 
+#kullanılamaz ve çalıştırılmaz diyor
+
+#******************************************************************************************************************#
+
+
+#Çıkarma da ve bölme de yine mantıkla ilerleyebilirsiniz ama çarpım söz konusu olduğunda şöyle bir durum var
+#1.matrisin satır sayısı 2.matrisin sutün sayısına eşit olacak ve aynı şekilde
+#1.matrisin sutün sayısı da 2.matrisin satır sayısına eşit olmalı.
+
+numpy_array = np.array([0,1, 2, 3, 4, 5, 6, 7, 8, 9])
+numpy_array1 = numpy_array.reshape(5,2)
+numpy_array2 = numpy_array.reshape(2,5)
+
+print(numpy_array1)
+print(numpy_array2)
 
 
 

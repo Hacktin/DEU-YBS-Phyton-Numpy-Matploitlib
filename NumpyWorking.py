@@ -518,6 +518,129 @@ print(reshapeList1*reshapeList2)
 
 print("")
 
+#İki matrisi birleştirme ile alakalı olarak 
+#yukarıda göstermediğimiz diğer yolu ya da fonksiyonlar
+
+#Sutün bazlı birleştirmek için vstack() fonksiyonu ve satır bazlı birleştirmek 
+#için de hstack() fonksiyonu da yukarıdaki concatenate fonksiyonu yerine kullanabiliriz
+
+#Kullanımlarını bir örnekle görelim
+
+#Reshapesiz ilk haliyle matrixler
+b1=np.arange(1,11,1)
+b2=np.arange(10,20,1)
+
+#Reshapeli halleri
+b11=b1.reshape(5,2)
+b21=b2.reshape(5,2)
+
+b3=np.vstack([b11,b21])
+print("b11 matrixi")
+print(b11)
+print("")
+print("b21 matrixi")
+print(b21)
+print("")
+print("b11 ile b21 düşey yani sutün bazlı birleştirilmesi")
+print(b3)
+
+print("")
+b4=np.hstack([b11,b21])
+print("b11 matrixi")
+print(b11)
+print("b21 matrixi")
+print(b21)
+print("")
+print("b11 ile b21 nin yatay yani satır bazlı birleştirilmesi")
+print(b4)
+
+print("")
+#Şimdi b1 ve b2 yani reshapesiz olan matrixlerde birleştirmeler deneyelim
+#İlk önce satır bazlı yapalım
+
+b12=np.hstack([b1,b2])
+
+print("b1 matrixi")
+print(b1)
+print("b2 matrixi")
+print(b2)
+print("")
+print("b1 ve b2 nin yatay yani satır bazlı birleştirilmesi")
+print(b12)
+
+print("")
+
+#Bir de sutün bazlı birleştirmeyi aynı şekilde örneği aşağıda yazalım
+
+b22=np.vstack([b1,b2])
+print("b1 matrixi")
+print(b1)
+print("b2 matrixi")
+print(b2)
+print("")
+print("b1 ve b2 nin düşey yani sutün bazlı birleştirilmesi")
+print(b22)
+
+print("")
+
+#***************************************************************************#
+
+#Bir matriste rastgele sayılar olusturma 
+
+print("3 sutün 3 satırdan oluşacak rastgele sayıların içine atıldığı matris")
+rastgele_dizi=np.random.rand(3,3)
+print(rastgele_dizi)
+#np.random.rand(3,3) 3 sutün 3 satır olacak şekilde rastgele sayı
+#oluşturuyor aslında.Ve biz burda hangi değerler arasında olacağını vs biz belirlemiyoruz
+#programımız kendisi otomatik sadece belirlediğimiz satır sutüna göre bir dizi oluşturacak
+
+print("")
+
+print("Normal dağılıma uygun 3'e 3'e matrix ")
+rastgele_dizi2=np.random.randn(3,3)
+print(rastgele_dizi2)
+#Aslında bu fonksiyon yukarıdaki ile hemen hemen kullanım aynı ve yaptığı şey yine
+#rastgele sayı üretmek.Ama bir şey var :) bu ürettiği rastgele sayıları bir şeye 
+#baz alarak üretiyor ya da açacak olursak normal(gaussian) dağılımına uyumlu olacak şekilde
+#rastgele sayılar üretiyor.Zaten rand sonundaki n de normaldan geliyor
+#Peki eğer normal dağılım olduğunu düşünmüyorsanız varyansını ve ortalamasını alalım isterseniz
+#Çünkü varyans normal dağılım da 1 olur ortalamada sıfırdır.İnanmıyorsak yazalım :)
+
+print("")
+ortalama=np.mean(rastgele_dizi2)
+print("Rastgele üretilen verilerin ortalaması:   ",int(ortalama))
+varyans=np.var(rastgele_dizi2)
+print("Rastgele üretilen verilerin varyansı:   ",int(varyans))
+
+#Bazen rastgele üretilen değerlerden dolayı varyansın yaklaşık değerini aldığımızda sıfır çıkabilir ama yine tekrardan
+#programı tekrardan çalıştırdığında varyansın yaklaşık tam değeri 1 olduğunu görebilirsiniz.int fonksiyonuna
+#alma nedenim tamamen virgüllü değer yerine yaklaşık tam olan değerini göstermek amaçlıydı.
+
+#Ortalama için diyecek olursak simetrik dağılım olduğu için rahatlıkla sıfır olduğunu da söyleyebiliriz ki
+#zaten programı çalıştırdığınızda bunu görürsünüz
+
+print("")
+
+print("2 ile 10 arasında 10 dahil olmayacak şekilde 10 tane tam sayı tipinde içine rastgele yerleştirilmiş matrix")
+integer_tipinde_matrix=np.random.randint(2,10,10)
+print(integer_tipinde_matrix)
+#Rastgele integer tipinde diziye sayılar oluşturulan örnek kodumuz
+#Bu fonksiyonu kullandığınızda herhangi bir satır sutün sayısı belirlemedik.Alt ve üst sınır değerleri ve kaç
+#tane üretileceğini parametre olarak parantez içinde yazıyoruz.
+#Ayrıca oluşan matrix 1 boyutlu olacaktır.
+
+#Ama tabi satır ve sutün sayısı koyarak matriximizi 1 boyutlu yerine 2 boyutlu da yapabiliriz onun örneği de
+#aşağıdaki gibidir.
+
+integer_tipinde_matrix1=np.random.randint(10,size=(2,5))
+
+#bu sefer dikkat edin size diyip 5 satır 2 sutün diyip low değeri vermedik
+#o default olarak 0 oluyor tabi alt sınırda verebilirsiniz size kalmış.10 sayısı ise üst limit olmaktadır.
+#size dediğimiz kısımda da önce sutün sayısı olarak 2 dedik sonrada satır sayısı olarak da 5 dedik.
+
+
+print("5 satır 2 sutünlük 0 ile 10 arasında rastgele sayı oluşturulmuş matrix")
+print(integer_tipinde_matrix1)
 
 
 
